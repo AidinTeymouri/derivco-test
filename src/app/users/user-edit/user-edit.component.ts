@@ -61,11 +61,11 @@ export class UserEditComponent implements OnInit, OnDestroy {
       dateOfBirth: [''],
       identityNumber: [null, [Validators.required]],
       address: this.fb.group({
-        lineOne: ['', Validators.required],
+        lineOne: [''],
         lineTwo: [''],
-        city: ['', Validators.required],
+        city: [''],
         country: [''],
-        postalCode: ['', Validators.required],
+        postalCode: [''],
       })
     });
   }

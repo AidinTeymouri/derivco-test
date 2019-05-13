@@ -58,7 +58,9 @@
         <label class="col-md-2 col-form-label" for="identityNumber">Identity Number</label>
         <div class="col-md-8">
           <input class="form-control" id="identityNumber" type="text" placeholder="Identity Number (required)"
-            formControlName="identityNumber" [ngClass]="{'is-invalid': ''}" />
+            formControlName="identityNumber" [ngClass]="{'is-invalid': (userForm.get('identityNumber').touched ||
+            userForm.get('identityNumber').dirty) &&
+            !userForm.get('identityNumber').valid}" />
           <span class="invalid-feedback">Identity Number is required</span>
         </div>
       </div>
@@ -78,7 +80,7 @@
           <div class="form-group row mb-2">
             <label class="col-md-2 col-form-label" for="lineOne">Line One</label>
             <div class="col-md-8">
-              <input class="form-control" id="lineOne" type="text" placeholder="Line One (required)"
+              <input class="form-control" id="lineOne" type="text" placeholder="Line One"
                 formControlName="lineOne" [ngClass]="{'is-invalid': ''}" />
               <span class="invalid-feedback">Line One is required</span>
             </div>
@@ -94,7 +96,7 @@
           <div class="form-group row mb-2">
             <label class="col-md-2 col-form-label" for="city">City</label>
             <div class="col-md-8">
-              <input class="form-control" id="city" type="text" placeholder="City (required)" formControlName="city"
+              <input class="form-control" id="city" type="text" placeholder="City" formControlName="city"
                 [ngClass]="{'is-invalid': ''}" />
               <span class="invalid-feedback">City is required</span>
             </div>
@@ -116,7 +118,7 @@
           <div class="form-group row mb-2">
             <label class="col-md-2 col-form-label" for="postalCode">Postal Code</label>
             <div class="col-md-8">
-              <input class="form-control" id="postalCode" type="text" placeholder="Postal Code (required)"
+              <input class="form-control" id="postalCode" type="text" placeholder="Postal Code"
                 formControlName="postalCode" [ngClass]="{'is-invalid': ''}" />
               <span class="invalid-feedback">Postal Code is required</span>
             </div>
