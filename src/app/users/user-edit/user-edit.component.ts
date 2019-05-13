@@ -55,13 +55,13 @@ export class UserEditComponent implements OnInit, OnDestroy {
       age: [0],
       email: ['', Validators.email],
       dateOfBirth: [''],
-      identityNumber: [null, [Validators.required, Validators.pattern(/^-?(0|[1-9]\d*)?$/)]],
+      identityNumber: [null, [Validators.required]],
       address: this.fb.group({
-        lineOne: [''],
+        lineOne: ['', Validators.required],
         lineTwo: [''],
-        city: [''],
+        city: ['', Validators.required],
         country: [''],
-        postalCode: [''],
+        postalCode: ['', Validators.required],
       })
     });
   }
@@ -69,7 +69,9 @@ export class UserEditComponent implements OnInit, OnDestroy {
   getUser(id: number): void {
     this.usersApiService.getUser(id)
       .subscribe(
-        (user: IUser) => this.displayUser(user),
+        (user: IUser) => {
+          this.displayUser(user);
+        },
         (error: any) => this.errorMessage = <any>error
       );
   }
@@ -96,7 +98,7 @@ export class UserEditComponent implements OnInit, OnDestroy {
       identityNumber: this.user.identityNumber,
       address: {
         lineOne: this.user.address.lineOne,
-        lineTwo: this.user.address.lineOne,
+        lineTwo: this.user.address.lineTwo,
         city: this.user.address.city,
         country: this.user.address.country,
         postalCode: this.user.address.postalCode,
@@ -124,7 +126,9 @@ export class UserEditComponent implements OnInit, OnDestroy {
         } else {
           this.usersApiService.updateUser(u)
             .subscribe(
-              () => this.onSaveComplete(),
+              () => {
+                this.onSaveComplete();
+              },
               (error: any) => this.errorMessage = <any>error
             );
         }
@@ -165,7 +169,5 @@ export class UserEditComponent implements OnInit, OnDestroy {
       this.userForm.controls['age'].setValue(this.age);
     }
   }
-
-
 
 }

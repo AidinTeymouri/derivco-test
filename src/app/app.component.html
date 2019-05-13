@@ -1,17 +1,16 @@
 <nav class='navbar navbar-expand navbar-light bg-light'>
   <ul class='navbar-nav'>
     <li class='nav-item'><a class='nav-link' routerLinkActive='active'
-          [routerLink]="['/home']">Home</a>
+          [routerLink]="['/home']"><strong>Home</strong></a>
     </li>
     <li class='nav-item'><a class='nav-link' routerLinkActive='active'
-      [routerLinkActiveOptions]="{exact: true}" [routerLink]="['/user-list']">Users List</a>
+      [routerLinkActiveOptions]="{exact: true}" [routerLink]="['/user-list']"><strong>Users List</strong></a>
     </li>
     <li class='nav-item'><a class='nav-link' routerLinkActive='active' [routerLinkActiveOptions]="{exact: true}"
-          [routerLink]="['/user-edit/0']">Add User</a>
+          [routerLink]="['/user-edit/0']"><strong>Add User</strong></a>
     </li>
   </ul>
 </nav>
-
 <hr>
 <div class='container'>
   <router-outlet></router-outlet>

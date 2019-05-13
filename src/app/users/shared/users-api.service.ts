@@ -86,7 +86,7 @@ export class UsersApiService {
       id: 0,
       firstName: null,
       lastName: null,
-      age: null,
+      age: 0,
       email: null,
       dateOfBirth: null,
       identityNumber: null,

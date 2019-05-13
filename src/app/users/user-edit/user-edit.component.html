@@ -34,20 +34,13 @@
         </div>
       </div>
 
-      <!-- <div class="form-group row mb-2">
-        <label class="col-md-2 col-form-label" for="age">Age</label>
-        <div class="col-md-8">
-          <input class="form-control" id="age" type="text" placeholder="Age (required)" formControlName="age"
-            [ngClass]="{'is-invalid': ''}" [attr.disabled]="true" />
-          <span class="invalid-feedback">Age is required</span>
-        </div>
-      </div> -->
-
       <div class="form-group row mb-2">
         <label class="col-md-2 col-form-label" for="email">Email</label>
         <div class="col-md-8">
           <input class="form-control" id="email" type="email" placeholder="Email (required)" formControlName="email"
-            [ngClass]="{'is-invalid': ''}" />
+            [ngClass]="{'is-invalid': (userForm.get('email').touched ||
+            userForm.get('email').dirty) &&
+            !userForm.get('email').valid}" />
           <span class="invalid-feedback">Email is required</span>
         </div>
       </div>
@@ -108,7 +101,7 @@
           </div>
 
           <div class="form-group row mb-2">
-            <label class="col-md-2 col-form-label" for="city">Country</label>
+            <label class="col-md-2 col-form-label" for="country">Country</label>
             <div class="col-md-8">
               <select class="form-control " formControlName="country" name="country" id="country"
                 [ngClass]="{'is-invalid': ''}">
@@ -121,10 +114,10 @@
           </div>
 
           <div class="form-group row mb-2">
-            <label class="col-md-2 col-form-label" for="city">Postal Code</label>
+            <label class="col-md-2 col-form-label" for="postalCode">Postal Code</label>
             <div class="col-md-8">
               <input class="form-control" id="postalCode" type="text" placeholder="Postal Code (required)"
-                formControlName="city" [ngClass]="{'is-invalid': ''}" />
+                formControlName="postalCode" [ngClass]="{'is-invalid': ''}" />
               <span class="invalid-feedback">Postal Code is required</span>
             </div>
           </div>
