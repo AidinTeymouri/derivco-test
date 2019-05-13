@@ -1,0 +1,83 @@
+<div class="card">
+  <div class="card-header" *ngIf="user">
+   <h3>{{pageTitle}}</h3>
+  </div>
+
+  <div class="card-body" *ngIf="user">
+
+    <div class="row">
+      <div class="col-md-2">First name:</div>
+      <div class="col-md-10"><strong>{{user.firstName}}</strong></div>
+    </div>
+    <div class="row">
+      <div class="col-md-2">Last name:</div>
+      <div class="col-md-10"><strong>{{user.lastName}}</strong></div>
+    </div>
+    <div class="row">
+      <div class="col-md-2">Age:</div>
+      <div class="col-md-10"><strong>{{user.age}}</strong></div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-2">Email:</div>
+      <div class="col-md-10"><strong>{{user.email}}</strong></div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-2">Date of Birth:</div>
+      <div class="col-md-10"><strong>{{user.dateOfBirth}}</strong></div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-2">Identity Number:</div>
+      <div class="col-md-10"><strong>{{user.identityNumber}}</strong></div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <h5>Address</h5>
+      </div>
+      <div class="card-body">
+        <div class="row">
+          <div class="col-md-2">Line One:</div>
+          <div class="col-md-10"><strong>{{user.address?.lineOne}}</strong></div>
+        </div>
+        <div class="row">
+          <div class="col-md-2">Line Two:</div>
+          <div class="col-md-10"><strong>{{user.address?.lineTwo}}</strong></div>
+        </div>
+        <div class="row">
+          <div class="col-md-2">City:</div>
+          <div class="col-md-10"><strong>{{user.address?.city}}</strong></div>
+        </div>
+        <div class="row">
+          <div class="col-md-2">Country:</div>
+          <div class="col-md-10"><strong>{{user.address?.country}}</strong></div>
+        </div>
+        <div class="row">
+          <div class="col-md-2">Postal Code:</div>
+          <div class="col-md-10"><strong>{{user.address?.postalCode}}</strong></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12">
+        <hr>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-4">
+        <button class="btn btn-outline-secondary mr-3" style="width:80px" (click)="onBack()">
+          <i class="fa fa-chevron-left"></i> Back
+        </button>
+        <button class="btn btn-outline-primary" style="width:80px" [routerLink]="['/user-detail', user.id, 'edit']">
+          Edit
+        </button>
+      </div>
+    </div>
+
+    <div class="alert alert-danger" *ngIf="errorMessage">{{errorMessage}}
+    </div>
+  </div>

@@ -1,0 +1,162 @@
+<div class="card">
+
+  <div class="card-header" *ngIf="user">
+    <h3>{{pageTitle}} {{user.firstName}} {{user.lastName}}</h3>
+  </div>
+
+  <div class="card-body">
+    <form novalidate (ngSubmit)="saveUser()" [formGroup]="userForm">
+
+
+      <div class="form-group row mb-2">
+        <label class="col-md-2 col-form-label" for="firstName">First Name</label>
+        <div class="col-md-8">
+          <input class="form-control" id="firstName" type="text" placeholder="First name (required)"
+            formControlName="firstName" [ngClass]="{'is-invalid': (userForm.get('firstName').touched ||
+                                        userForm.get('firstName').dirty) &&
+                                        !userForm.get('firstName').valid}" />
+          <span class="invalid-feedback" *ngIf="userForm.get('firstName').errors?.required">
+            First name is required
+          </span>
+        </div>
+      </div>
+
+      <div class="form-group row mb-2">
+        <label class="col-md-2 col-form-label" for="lastName">Last Name</label>
+        <div class="col-md-8">
+          <input class="form-control" id="lastName" type="text" placeholder="Last name (required)"
+            formControlName="lastName" [ngClass]="{'is-invalid': (userForm.get('lastName').touched ||
+                                          userForm.get('lastName').dirty) &&
+                                          !userForm.get('lastName').valid}" />
+          <span class="invalid-feedback" *ngIf="userForm.get('lastName').errors?.required">
+            Last name is required
+          </span>
+        </div>
+      </div>
+
+      <!-- <div class="form-group row mb-2">
+        <label class="col-md-2 col-form-label" for="age">Age</label>
+        <div class="col-md-8">
+          <input class="form-control" id="age" type="text" placeholder="Age (required)" formControlName="age"
+            [ngClass]="{'is-invalid': ''}" [attr.disabled]="true" />
+          <span class="invalid-feedback">Age is required</span>
+        </div>
+      </div> -->
+
+      <div class="form-group row mb-2">
+        <label class="col-md-2 col-form-label" for="email">Email</label>
+        <div class="col-md-8">
+          <input class="form-control" id="email" type="email" placeholder="Email (required)" formControlName="email"
+            [ngClass]="{'is-invalid': ''}" />
+          <span class="invalid-feedback">Email is required</span>
+        </div>
+      </div>
+
+      <div class="form-group row mb-2">
+        <label class="col-md-2 col-form-label" for="dateOfBirth">Date of birth</label>
+        <div class="col-md-8">
+          <input class="form-control" id="dateOfBirth" type="date" placeholder="" formControlName="dateOfBirth"
+            [ngClass]="{'is-invalid': ''}" />
+          <span class="invalid-feedback">Date of birth is required</span>
+        </div>
+      </div>
+
+      <div class="form-group row mb-2">
+        <label class="col-md-2 col-form-label" for="identityNumber">Identity Number</label>
+        <div class="col-md-8">
+          <input class="form-control" id="identityNumber" type="text" placeholder="Identity Number (required)"
+            formControlName="identityNumber" [ngClass]="{'is-invalid': ''}" />
+          <span class="invalid-feedback">Identity Number is required</span>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-12">
+          <hr>
+        </div>
+      </div>
+
+      <div class="card" [formGroup]="userForm.controls.address">
+        <div class="card-header">
+          <h6>Address</h6>
+        </div>
+
+        <div class="card-body">
+          <div class="form-group row mb-2">
+            <label class="col-md-2 col-form-label" for="lineOne">Line One</label>
+            <div class="col-md-8">
+              <input class="form-control" id="lineOne" type="text" placeholder="Line One (required)"
+                formControlName="lineOne" [ngClass]="{'is-invalid': ''}" />
+              <span class="invalid-feedback">Line One is required</span>
+            </div>
+          </div>
+
+          <div class="form-group row mb-2">
+            <label class="col-md-2 col-form-label" for="lineTwo">Line Two</label>
+            <div class="col-md-8">
+              <input class="form-control" id="lineTwo" type="text" placeholder="Line Two" formControlName="lineTwo" />
+            </div>
+          </div>
+
+          <div class="form-group row mb-2">
+            <label class="col-md-2 col-form-label" for="city">City</label>
+            <div class="col-md-8">
+              <input class="form-control" id="city" type="text" placeholder="City (required)" formControlName="city"
+                [ngClass]="{'is-invalid': ''}" />
+              <span class="invalid-feedback">City is required</span>
+            </div>
+          </div>
+
+          <div class="form-group row mb-2">
+            <label class="col-md-2 col-form-label" for="city">Country</label>
+            <div class="col-md-8">
+              <select class="form-control " formControlName="country" name="country" id="country"
+                [ngClass]="{'is-invalid': ''}">
+                <option value="">----------</option>
+                <option *ngFor="let c of countries; let index = index" [value]="c.country_name">{{ c.country_name }}
+                </option>
+              </select>
+              <span class="invalid-feedback">City is required</span>
+            </div>
+          </div>
+
+          <div class="form-group row mb-2">
+            <label class="col-md-2 col-form-label" for="city">Postal Code</label>
+            <div class="col-md-8">
+              <input class="form-control" id="postalCode" type="text" placeholder="Postal Code (required)"
+                formControlName="city" [ngClass]="{'is-invalid': ''}" />
+              <span class="invalid-feedback">Postal Code is required</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class=row>
+        <div class="col-md-12">
+          <hr>
+        </div>
+      </div>
+      <div class="form-group row mb-2 buttons-control">
+        <div class="offset-md-2 col-md-4">
+          <button class="btn btn-primary mr-3" type="submit" style="width:80px"
+            [title]="userForm.valid ? 'Save your entered data' : 'Disabled until the form data is valid'"
+            [disabled]="!userForm.valid">
+            Save
+          </button>
+
+          <button class="btn btn-outline-secondary mr-3" style="width:80px;" type="button" title="Cancel your edits"
+            [routerLink]="['/user-list']">
+            Cancel
+          </button>
+
+          <button class="btn btn-outline-warning" style="width:80px" type="button" title="Delete this User"
+            (click)="deleteUser()">
+            Delete
+          </button>
+        </div>
+      </div>
+
+    </form>
+  </div>
+
+</div>
