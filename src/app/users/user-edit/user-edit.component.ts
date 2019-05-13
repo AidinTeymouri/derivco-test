@@ -42,6 +42,10 @@ export class UserEditComponent implements OnInit, OnDestroy {
         this.getUser(id);
       }
     );
+
+    this.userForm.controls.dateOfBirth.valueChanges.subscribe(res => {
+      this.calculateAge();
+    });
   }
 
   ngOnDestroy(): void {
@@ -114,8 +118,6 @@ export class UserEditComponent implements OnInit, OnDestroy {
     if (this.userForm.valid) {
       if (this.userForm.dirty) {
         const u = { ...this.user, ...this.userForm.value };
-
-        this.calculateAge();
 
         if (u.id === 0) {
           this.usersApiService.createUser(u)
