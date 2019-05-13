@@ -21,6 +21,7 @@
         <th>Email</th>
         <th>Identity Number</th>
         <th>Edit</th>
+        <th>Detail</th>
       </tr>
     </thead>
     <tbody>
@@ -40,7 +41,13 @@
         <td>
           <button class="btn btn-outline-primary btn-sm" [routerLink]="['/user-edit', user.id]">
             Edit
-          </button></td>
+          </button>
+        </td>
+        <td>
+            <button class="btn btn-outline-primary btn-sm" [routerLink]="['/user-detail', user.id]">
+              Detail
+            </button>
+          </td>
       </tr>
     </tbody>
   </table>
