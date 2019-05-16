@@ -60,7 +60,7 @@ export class UserEditComponent implements OnInit, OnDestroy {
       lastName: ['', Validators.required],
       age: [0],
       email: ['', Validators.email],
-      dateOfBirth: [''],
+      dateOfBirth: ['', Validators.required],
       identityNumber: [null, [Validators.required]],
       address: this.fb.group({
         lineOne: [''],
