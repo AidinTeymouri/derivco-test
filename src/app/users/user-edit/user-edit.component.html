@@ -37,8 +37,7 @@
       <div class="form-group row mb-2">
         <label class="col-md-2 col-form-label" for="email">Email</label>
         <div class="col-md-8">
-          <input class="form-control" id="email" type="email" placeholder="Email (required)" formControlName="email"
-            [ngClass]="{'is-invalid': (userForm.get('email').touched ||
+          <input class="form-control" id="email" type="email" placeholder="Email" formControlName="email" [ngClass]="{'is-invalid': (userForm.get('email').touched ||
             userForm.get('email').dirty) &&
             !userForm.get('email').valid}" />
           <span class="invalid-feedback">Email is required</span>
@@ -49,8 +48,12 @@
         <label class="col-md-2 col-form-label" for="dateOfBirth">Date of birth</label>
         <div class="col-md-8">
           <input class="form-control" id="dateOfBirth" type="date" placeholder="" formControlName="dateOfBirth"
-            [ngClass]="{'is-invalid': ''}" />
-          <span class="invalid-feedback">Date of birth is required</span>
+            [ngClass]="{'is-invalid': (userForm.get('dateOfBirth').touched ||
+          userForm.get('dateOfBirth').dirty) &&
+          !userForm.get('dateOfBirth').valid}" />
+          <span class="invalid-feedback" *ngIf="userForm.get('dateOfBirth').errors?.required">
+            Date of birth is required
+          </span>
         </div>
       </div>
 
@@ -80,9 +83,7 @@
           <div class="form-group row mb-2">
             <label class="col-md-2 col-form-label" for="lineOne">Line One</label>
             <div class="col-md-8">
-              <input class="form-control" id="lineOne" type="text" placeholder="Line One"
-                formControlName="lineOne" [ngClass]="{'is-invalid': ''}" />
-              <span class="invalid-feedback">Line One is required</span>
+              <input class="form-control" id="lineOne" type="text" placeholder="Line One" formControlName="lineOne" />
             </div>
           </div>
 
@@ -96,9 +97,7 @@
           <div class="form-group row mb-2">
             <label class="col-md-2 col-form-label" for="city">City</label>
             <div class="col-md-8">
-              <input class="form-control" id="city" type="text" placeholder="City" formControlName="city"
-                [ngClass]="{'is-invalid': ''}" />
-              <span class="invalid-feedback">City is required</span>
+              <input class="form-control" id="city" type="text" placeholder="City" formControlName="city" />
             </div>
           </div>
 
@@ -111,7 +110,6 @@
                 <option *ngFor="let c of countries; let index = index" [value]="c.country_name">{{ c.country_name }}
                 </option>
               </select>
-              <span class="invalid-feedback">City is required</span>
             </div>
           </div>
 
@@ -119,8 +117,7 @@
             <label class="col-md-2 col-form-label" for="postalCode">Postal Code</label>
             <div class="col-md-8">
               <input class="form-control" id="postalCode" type="text" placeholder="Postal Code"
-                formControlName="postalCode" [ngClass]="{'is-invalid': ''}" />
-              <span class="invalid-feedback">Postal Code is required</span>
+                formControlName="postalCode" />
             </div>
           </div>
         </div>

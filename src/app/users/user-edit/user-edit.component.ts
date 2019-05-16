@@ -43,9 +43,11 @@ export class UserEditComponent implements OnInit, OnDestroy {
       }
     );
 
-    this.userForm.controls.dateOfBirth.valueChanges.subscribe(res => {
+    this.userForm.controls.dateOfBirth.valueChanges.subscribe(() => {
       this.calculateAge();
     });
+
+    this.userForm.controls.dateOfBirth
   }
 
   ngOnDestroy(): void {

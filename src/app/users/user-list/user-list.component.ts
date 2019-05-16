@@ -10,8 +10,9 @@ import { UsersApiService } from '../shared/users-api.service';
 })
 export class UserListComponent implements OnInit {
   errorMessage = '';
-
   users: any;
+  loading: boolean;
+
   constructor(
     private usersApiService: UsersApiService,
   ) { }
@@ -21,10 +22,11 @@ export class UserListComponent implements OnInit {
   }
 
   getUsers() {
+    this.loading = true;
     this.usersApiService.getUsers().subscribe(
       users => {
         this.users = users ;
-        console.log(this.users);
+        this.loading = false;
       },
       error => this.errorMessage = <any>error
     );

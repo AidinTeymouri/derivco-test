@@ -4,16 +4,22 @@
   </div>
 </div>
 <div class="row">
-    <div class="col-md-12">
-      <hr>
-    </div>
+  <div class="col-md-12">
+    <hr>
   </div>
+</div>
+
+<div class="row" *ngIf="loading">
+  <div class="col-md-12 textmd-center">
+    <h4>Loading...</h4>
+  </div>
+  <hr>
+</div>
 <div class="table-responsive">
   <table class="table mb-0" *ngIf="users && users.length">
     <thead>
       <tr>
         <th>
-
         </th>
         <th>First Name</th>
         <th>Last Name</th>
@@ -41,10 +47,10 @@
           </button>
         </td>
         <td>
-            <button class="btn btn-outline-primary btn-sm" [routerLink]="['/user-detail', user.id]">
-              Detail
-            </button>
-          </td>
+          <button class="btn btn-outline-primary btn-sm" [routerLink]="['/user-detail', user.id]">
+            Detail
+          </button>
+        </td>
       </tr>
     </tbody>
   </table>
